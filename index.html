@@ -795,6 +795,7 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
+
         // Service Worker မှတ်ပုံတင်ခြင်း
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -808,490 +809,420 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-        // DOM Elements
-        const addColumnBtn = document.getElementById('addColumnBtn');
-        const columnOptions = document.getElementById('columnOptions');
-        const overlay = document.getElementById('overlay');
-        const dynamicIsland = document.getElementById('dynamicIsland');
-        const islandDeleteBtn = document.getElementById('islandDeleteBtn');
-        const recipientNameInput = document.getElementById('recipientName');
-        const voucherDateInput = document.getElementById('voucherDate');
-        const saveBtn = document.getElementById('saveBtn');
-        const folderSystem = document.getElementById('folderSystem');
-        const voucherSystem = document.getElementById('voucherSystem');
-        const createFolderBtn = document.getElementById('createFolderBtn');
-        const actionFolderBtn = document.getElementById('actionFolderBtn');
-        const backToFoldersBtn = document.getElementById('backToFoldersBtn');
-        const folderList = document.getElementById('folderList');
-        const folderFormContainer = document.getElementById('folderFormContainer');
-        const folderForm = document.getElementById('folderForm');
-        const folderCloseFormBtn = document.getElementById('folderCloseFormBtn');
-        const folderFormSubmitBtn = document.getElementById('folderFormSubmitBtn');
-        const folderActionIsland = document.getElementById('folderActionIsland');
-        const folderIslandEditBtn = document.getElementById('folderIslandEditBtn');
-        const folderIslandDeleteBtn = document.getElementById('folderIslandDeleteBtn');
-        const closeVoucherSystemBtn = document.getElementById('closeVoucherSystemBtn');
-        const folderConfirmDialog = document.getElementById('folderConfirmDialog');
-        const confirmFolderDelete = document.getElementById('confirmFolderDelete');
-        const cancelFolderDelete = document.getElementById('cancelFolderDelete');
-        const itemConfirmDialog = document.getElementById('itemConfirmDialog');
-        const confirmItemDelete = document.getElementById('confirmItemDelete');
-        const cancelItemDelete = document.getElementById('cancelItemDelete');
+// Check if the browser is not Safari
+if (!/Safari/.test(navigator.userAgent) || /Chrome/.test(navigator.userAgent)) {
+    alert("ဒီအက်ပ်ကို iPhone မှာ PWA အဖြစ်ထည့်သွင်းဖို့ Safari ဘရောက်ဆာကို အသုံးပြုပေးပါ။");
+}
 
-        let selectedRow = null;
-        let editIndex = null;
-        let selectedFolder = null;
-        let editFolderIndex = null;
-        let currentFolderId = null;
-        let isSelectionMode = false;
-        let selectedFolders = [];
+// DOM Elements
+const addColumnBtn = document.getElementById('addColumnBtn');
+const columnOptions = document.getElementById('columnOptions');
+const overlay = document.getElementById('overlay');
+const dynamicIsland = document.getElementById('dynamicIsland');
+const islandDeleteBtn = document.getElementById('islandDeleteBtn');
+const recipientNameInput = document.getElementById('recipientName');
+const voucherDateInput = document.getElementById('voucherDate');
+const saveBtn = document.getElementById('saveBtn');
+const folderSystem = document.getElementById('folderSystem');
+const voucherSystem = document.getElementById('voucherSystem');
+const createFolderBtn = document.getElementById('createFolderBtn');
+const actionFolderBtn = document.getElementById('actionFolderBtn');
+const backToFoldersBtn = document.getElementById('backToFoldersBtn');
+const folderList = document.getElementById('folderList');
+const folderFormContainer = document.getElementById('folderFormContainer');
+const folderForm = document.getElementById('folderForm');
+const folderCloseFormBtn = document.getElementById('folderCloseFormBtn');
+const folderFormSubmitBtn = document.getElementById('folderFormSubmitBtn');
+const folderActionIsland = document.getElementById('folderActionIsland');
+const folderIslandEditBtn = document.getElementById('folderIslandEditBtn');
+const folderIslandDeleteBtn = document.getElementById('folderIslandDeleteBtn');
+const closeVoucherSystemBtn = document.getElementById('closeVoucherSystemBtn');
+const folderConfirmDialog = document.getElementById('folderConfirmDialog');
+const confirmFolderDelete = document.getElementById('confirmFolderDelete');
+const cancelFolderDelete = document.getElementById('cancelFolderDelete');
+const itemConfirmDialog = document.getElementById('itemConfirmDialog');
+const confirmItemDelete = document.getElementById('confirmItemDelete');
+const cancelItemDelete = document.getElementById('cancelItemDelete');
 
-        // Predefined item names
-        const predefinedItems = [
-            "ကော်ပိတ်",
-            "ကချင်one set",
-            "ဇာone set",
-            "ပါတိတ်one set",
-            "စီးကွင့်",
-            "Hand Made",
-            "ချိတ်ထမီ",
-            "ပတ်ထမီ",
-            "No Bra",
-            "ဂါဝန်",
-            "နှစ်ထပ်ချုပ်",
-            "ရင်ဖုန်း",
-            "နောက်ဇစ်"
-        ];
+let selectedRow = null;
+let editIndex = null;
+let selectedFolder = null;
+let editFolderIndex = null;
+let currentFolderId = null;
+let isSelectionMode = false;
+let selectedFolders = [];
 
-        // Initialize
-        loadFolders();
+// Predefined item names
+const predefinedItems = [
+    "ကော်ပိတ်",
+    "ကချင်one set",
+    "ဇာone set",
+    "ပါတိတ်one set",
+    "စီးကွင့်",
+    "Hand Made",
+    "ချိတ်ထမီ",
+    "ပတ်ထမီ",
+    "No Bra",
+    "ဂါဝန်",
+    "နှစ်ထပ်ချုပ်",
+    "ရင်ဖုန်း",
+    "နောက်ဇစ်"
+];
 
-        // Folder System Functions
-        function loadFolders() {
-            const folders = JSON.parse(localStorage.getItem('folders')) || [];
-            folderList.innerHTML = '';
+// Initialize
+loadFolders();
 
-            if (folders.length === 0) {
-                folderList.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #666;">No folders created yet</p>';
-            } else {
-                folders.forEach((folder, index) => {
-                    const folderElement = document.createElement('div');
-                    folderElement.className = 'folder';
-                    folderElement.dataset.folderId = folder.id;
-                    folderElement.innerHTML = `
-                        <input type="checkbox" class="folder-checkbox" data-folder-id="${folder.id}">
-                        <div class="folder-icon">📁</div>
-                        <div class="folder-name">${folder.name}</div>
-                    `;
-                    folderElement.addEventListener('click', (e) => {
-                        if (isSelectionMode) {
-                            e.preventDefault();
-                            const checkbox = folderElement.querySelector('.folder-checkbox');
-                            checkbox.checked = !checkbox.checked;
-                            toggleFolderSelection(folder.id, index);
-                        } else {
-                            openFolder(folder.id);
-                        }
-                    });
-                    folderList.appendChild(folderElement);
-                });
-            }
-        }
+// Folder System Functions
+function loadFolders() {
+    const folders = JSON.parse(localStorage.getItem('folders')) || [];
+    folderList.innerHTML = '';
 
-        function toggleSelectionMode() {
-            isSelectionMode = !isSelectionMode;
-            selectedFolders = [];
-            folderList.classList.toggle('selection-mode', isSelectionMode);
-            actionFolderBtn.textContent = isSelectionMode ? 'Done' : 'Actions';
-            
-            const checkboxes = document.querySelectorAll('.folder-checkbox');
-            checkboxes.forEach(checkbox => {
-                checkbox.checked = false;
-            });
-
-            if (!isSelectionMode) {
-                hideFolderActionIsland();
-            }
-        }
-
-        function toggleFolderSelection(folderId, index) {
-            const folderElement = document.querySelector(`.folder[data-folder-id="${folderId}"]`);
-            const isSelected = selectedFolders.some(f => f.id === folderId);
-
-            if (isSelected) {
-                selectedFolders = selectedFolders.filter(f => f.id !== folderId);
-                folderElement.classList.remove('selected');
-            } else {
-                const folders = JSON.parse(localStorage.getItem('folders')) || [];
-                selectedFolders.push({ id: folderId, index, name: folders[index].name });
-                folderElement.classList.add('selected');
-            }
-
-            if (selectedFolders.length > 0) {
-                showFolderActionIsland();
-            } else {
-                hideFolderActionIsland();
-            }
-        }
-
-        function openFolder(folderId) {
-            currentFolderId = folderId;
-            folderSystem.classList.remove('visible');
-            voucherSystem.classList.add('visible');
-            backToFoldersBtn.style.display = 'block';
-            loadVoucherData(folderId);
-        }
-
-        function closeFolder() {
-            currentFolderId = null;
-            folderSystem.classList.add('visible');
-            voucherSystem.classList.remove('visible');
-            backToFoldersBtn.style.display = 'none';
-            saveVoucherData();
-            if (isSelectionMode) {
-                toggleSelectionMode();
-            }
-        }
-
-        function showFolderForm(isEdit = false, folder = null) {
-            folderFormContainer.classList.add('visible');
-            overlay.style.display = 'block';
-            folderFormSubmitBtn.textContent = isEdit ? 'Update Folder' : 'Create Folder';
-            
-            if (isEdit && folder) {
-                document.getElementById('folderName').value = folder.name;
-            } else {
-                document.getElementById('folderName').value = '';
-            }
-        }
-
-        function closeFolderForm() {
-            folderFormContainer.classList.remove('visible');
-            overlay.style.display = 'none';
-            folderForm.reset();
-            editFolderIndex = null;
-            hideFolderActionIsland();
-        }
-
-        function showFolderActionIsland() {
-            folderActionIsland.classList.add('visible');
-            overlay.style.display = 'block';
-        }
-
-        function hideFolderActionIsland() {
-            folderActionIsland.classList.remove('visible');
-            overlay.style.display = 'none';
-            selectedFolders = [];
-            const folders = document.querySelectorAll('.folder');
-            folders.forEach(folder => folder.classList.remove('selected'));
-            const checkboxes = document.querySelectorAll('.folder-checkbox');
-            checkboxes.forEach(checkbox => checkbox.checked = false);
-        }
-
-        // Folder Form Submission
-        folderForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const name = document.getElementById('folderName').value.trim();
-            const folders = JSON.parse(localStorage.getItem('folders')) || [];
-
-            if (name === '') {
-                alert('Folder name cannot be empty');
-                return;
-            }
-
-            if (folders.some(f => f.name === name && f.id !== (editFolderIndex !== null ? folders[editFolderIndex].id : null))) {
-                alert('Folder name already exists');
-                return;
-            }
-
-            if (editFolderIndex !== null) {
-                folders[editFolderIndex].name = name;
-            } else {
-                const newFolder = {
-                    id: Date.now().toString(),
-                    name: name,
-                    voucherData: {
-                        recipientName: '',
-                        voucherDate: '',
-                        items: []
-                    }
-                };
-                folders.push(newFolder);
-            }
-
-            localStorage.setItem('folders', JSON.stringify(folders));
-            closeFolderForm();
-            loadFolders();
-            if (isSelectionMode) {
-                toggleSelectionMode();
-            }
-        });
-
-        // Folder Action Island Actions
-        folderIslandEditBtn.addEventListener('click', () => {
-            if (selectedFolders.length === 1) {
-                editFolderIndex = selectedFolders[0].index;
-                showFolderForm(true, { name: selectedFolders[0].name });
-                toggleSelectionMode();
-            } else {
-                alert('Please select exactly one folder to edit.');
-            }
-        });
-
-        folderIslandDeleteBtn.addEventListener('click', () => {
-            if (selectedFolders.length > 0) {
-                folderConfirmDialog.style.display = 'block';
-                overlay.style.display = 'block';
-            } else {
-                alert('Please select at least one folder to delete.');
-            }
-        });
-
-        confirmFolderDelete.addEventListener('click', () => {
-            if (selectedFolders.length > 0) {
-                let folders = JSON.parse(localStorage.getItem('folders')) || [];
-                selectedFolders.forEach(folder => {
-                    folders = folders.filter(f => f.id !== folder.id);
-                });
-                localStorage.setItem('folders', JSON.stringify(folders));
-                hideFolderActionIsland();
-                loadFolders();
-                folderConfirmDialog.style.display = 'none';
-                overlay.style.display = 'none';
+    if (folders.length === 0) {
+        folderList.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #666;">No folders created yet</p>';
+    } else {
+        folders.forEach((folder, index) => {
+            const folderElement = document.createElement('div');
+            folderElement.className = 'folder';
+            folderElement.dataset.folderId = folder.id;
+            folderElement.innerHTML = `
+                <input type="checkbox" class="folder-checkbox" data-folder-id="${folder.id}">
+                <div class="folder-icon">📁</div>
+                <div class="folder-name">${folder.name}</div>
+            `;
+            folderElement.addEventListener('click', (e) => {
                 if (isSelectionMode) {
-                    toggleSelectionMode();
+                    e.preventDefault();
+                    const checkbox = folderElement.querySelector('.folder-checkbox');
+                    checkbox.checked = !checkbox.checked;
+                    toggleFolderSelection(folder.id, index);
+                } else {
+                    openFolder(folder.id);
                 }
-            }
-        });
-
-        cancelFolderDelete.addEventListener('click', () => {
-            folderConfirmDialog.style.display = 'none';
-            overlay.style.display = 'none';
-        });
-
-        // Action Folder Button
-        actionFolderBtn.addEventListener('click', toggleSelectionMode);
-
-        // Create folder button
-        createFolderBtn.addEventListener('click', () => showFolderForm());
-
-        // Back to folders button
-        backToFoldersBtn.addEventListener('click', closeFolder);
-
-        // Close voucher system button
-        closeVoucherSystemBtn.addEventListener('click', closeFolder);
-
-        // Overlay click handler
-        overlay.addEventListener('click', () => {
-            hideDynamicIsland();
-            closeFolderForm();
-            hideFolderActionIsland();
-            folderConfirmDialog.style.display = 'none';
-            itemConfirmDialog.style.display = 'none';
-            columnOptions.style.display = 'none';
-            document.querySelectorAll('.item-name-dropdown').forEach(dropdown => {
-                dropdown.style.display = 'none';
             });
-            if (isSelectionMode) {
-                toggleSelectionMode();
-            }
+            folderList.appendChild(folderElement);
         });
+    }
+}
 
-        // Voucher System Functions
-        function loadVoucherData(folderId) {
-            const folders = JSON.parse(localStorage.getItem('folders')) || [];
-            const folder = folders.find(f => f.id === folderId);
-            
-            if (!folder) return;
-            
-            const voucherData = folder.voucherData || {
+function toggleSelectionMode() {
+    isSelectionMode = !isSelectionMode;
+    selectedFolders = [];
+    folderList.classList.toggle('selection-mode', isSelectionMode);
+    actionFolderBtn.textContent = isSelectionMode ? 'Done' : 'Actions';
+    
+    const checkboxes = document.querySelectorAll('.folder-checkbox');
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = false;
+    });
+
+    if (!isSelectionMode) {
+        hideFolderActionIsland();
+    }
+}
+
+function toggleFolderSelection(folderId, index) {
+    const folderElement = document.querySelector(`.folder[data-folder-id="${folderId}"]`);
+    const isSelected = selectedFolders.some(f => f.id === folderId);
+
+    if (isSelected) {
+        selectedFolders = selectedFolders.filter(f => f.id !== folderId);
+        folderElement.classList.remove('selected');
+    } else {
+        const folders = JSON.parse(localStorage.getItem('folders')) || [];
+        selectedFolders.push({ id: folderId, index, name: folders[index].name });
+        folderElement.classList.add('selected');
+    }
+
+    if (selectedFolders.length > 0) {
+        showFolderActionIsland();
+    } else {
+        hideFolderActionIsland();
+    }
+}
+
+function openFolder(folderId) {
+    currentFolderId = folderId;
+    folderSystem.classList.remove('visible');
+    voucherSystem.classList.add('visible');
+    backToFoldersBtn.style.display = 'block';
+    loadVoucherData(folderId);
+}
+
+function closeFolder() {
+    currentFolderId = null;
+    folderSystem.classList.add('visible');
+    voucherSystem.classList.remove('visible');
+    backToFoldersBtn.style.display = 'none';
+    saveVoucherData();
+    if (isSelectionMode) {
+        toggleSelectionMode();
+    }
+}
+
+function showFolderForm(isEdit = false, folder = null) {
+    folderFormContainer.classList.add('visible');
+    overlay.style.display = 'block';
+    folderFormSubmitBtn.textContent = isEdit ? 'Update Folder' : 'Create Folder';
+    
+    if (isEdit && folder) {
+        document.getElementById('folderName').value = folder.name;
+    } else {
+        document.getElementById('folderName').value = '';
+    }
+}
+
+function closeFolderForm() {
+    folderFormContainer.classList.remove('visible');
+    overlay.style.display = 'none';
+    folderForm.reset();
+    editFolderIndex = null;
+    hideFolderActionIsland();
+}
+
+function showFolderActionIsland() {
+    folderActionIsland.classList.add('visible');
+    overlay.style.display = 'block';
+}
+
+function hideFolderActionIsland() {
+    folderActionIsland.classList.remove('visible');
+    overlay.style.display = 'none';
+    selectedFolders = [];
+    const folders = document.querySelectorAll('.folder');
+    folders.forEach(folder => folder.classList.remove('selected'));
+    const checkboxes = document.querySelectorAll('.folder-checkbox');
+    checkboxes.forEach(checkbox => checkbox.checked = false);
+}
+
+// Folder Form Submission
+folderForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('folderName').value.trim();
+    const folders = JSON.parse(localStorage.getItem('folders')) || [];
+
+    if (name === '') {
+        alert('Folder name cannot be empty');
+        return;
+    }
+
+    if (folders.some(f => f.name === name && f.id !== (editFolderIndex !== null ? folders[editFolderIndex].id : null))) {
+        alert('Folder name already exists');
+        return;
+    }
+
+    if (editFolderIndex !== null) {
+        folders[editFolderIndex].name = name;
+    } else {
+        const newFolder = {
+            id: Date.now().toString(),
+            name: name,
+            voucherData: {
                 recipientName: '',
                 voucherDate: '',
                 items: []
-            };
-            
-            recipientNameInput.value = voucherData.recipientName;
-            voucherDateInput.value = voucherData.voucherDate;
-            document.getElementById('displayRecipientName').textContent = voucherData.recipientName;
-            document.getElementById('displayVoucherDate').textContent = voucherData.voucherDate;
-            
-            document.querySelector('#voucherTable tbody').innerHTML = '';
-            
-            voucherData.items.forEach(item => addItemToTable(item.name, item.quantity, item.price));
-            updateGrandTotal();
-        }
-
-        function saveVoucherData() {
-            if (!currentFolderId) return;
-            
-            const items = [];
-            document.querySelectorAll('#voucherTable tbody tr').forEach(row => {
-                const name = row.querySelector('.item-name input').value;
-                const quantity = parseInt(row.querySelector('.quantity input').value) || 0;
-                const price = parseFloat(row.querySelector('.price input').value) || 0;
-                if (name || quantity || price) {
-                    items.push({ name, quantity, price });
-                }
-            });
-            
-            const voucherData = {
-                recipientName: recipientNameInput.value,
-                voucherDate: voucherDateInput.value,
-                items
-            };
-            
-            const folders = JSON.parse(localStorage.getItem('folders')) || [];
-            const folderIndex = folders.findIndex(f => f.id === currentFolderId);
-            
-            if (folderIndex !== -1) {
-                folders[folderIndex].voucherData = voucherData;
-                localStorage.setItem('folders', JSON.stringify(folders));
             }
-        }
+        };
+        folders.push(newFolder);
+    }
 
-        // Initialize Dropdown for Item Name
-        function initDropdown(row) {
-            const dropdown = row.querySelector('.item-name-dropdown');
-            dropdown.innerHTML = ''; // Clear previous items
-            predefinedItems.forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'dropdown-item';
-                div.textContent = item;
-                div.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Prevent click from closing dropdown immediately
-                    row.querySelector('.item-name input').value = item;
-                    dropdown.style.display = 'none';
-                    updateRowTotal(row);
-                    updateGrandTotal();
-                    saveVoucherData();
-                });
-                dropdown.appendChild(div);
-            });
-        }
+    localStorage.setItem('folders', JSON.stringify(folders));
+    closeFolderForm();
+    loadFolders();
+    if (isSelectionMode) {
+        toggleSelectionMode();
+    }
+});
 
-        // Show/Hide Column Options
-        addColumnBtn.addEventListener('click', () => {
-            columnOptions.style.display = columnOptions.style.display === 'block' ? 'none' : 'block';
+// Folder Action Island Actions
+folderIslandEditBtn.addEventListener('click', () => {
+    if (selectedFolders.length === 1) {
+        editFolderIndex = selectedFolders[0].index;
+        showFolderForm(true, { name: selectedFolders[0].name });
+        toggleSelectionMode();
+    } else {
+        alert('Please select exactly one folder to edit.');
+    }
+});
+
+folderIslandDeleteBtn.addEventListener('click', () => {
+    if (selectedFolders.length > 0) {
+        folderConfirmDialog.style.display = 'block';
+        overlay.style.display = 'block';
+    } else {
+        alert('Please select at least one folder to delete.');
+    }
+});
+
+confirmFolderDelete.addEventListener('click', () => {
+    if (selectedFolders.length > 0) {
+        let folders = JSON.parse(localStorage.getItem('folders')) || [];
+        selectedFolders.forEach(folder => {
+            folders = folders.filter(f => f.id !== folder.id);
         });
+        localStorage.setItem('folders', JSON.stringify(folders));
+        hideFolderActionIsland();
+        loadFolders();
+        folderConfirmDialog.style.display = 'none';
+        overlay.style.display = 'none';
+        if (isSelectionMode) {
+            toggleSelectionMode();
+        }
+    }
+});
 
-        // Add Columns
-        columnOptions.querySelectorAll('.column-option').forEach(option => {
-            option.addEventListener('click', () => {
-                const numColumns = parseInt(option.dataset.columns);
-                addColumnsToTable(numColumns);
-                columnOptions.style.display = 'none';
-                saveVoucherData();
-            });
+cancelFolderDelete.addEventListener('click', () => {
+    folderConfirmDialog.style.display = 'none';
+    overlay.style.display = 'none';
+});
+
+// Action Folder Button
+actionFolderBtn.addEventListener('click', toggleSelectionMode);
+
+// Create folder button
+createFolderBtn.addEventListener('click', () => showFolderForm());
+
+// Back to folders button
+backToFoldersBtn.addEventListener('click', closeFolder);
+
+// Close voucher system button
+closeVoucherSystemBtn.addEventListener('click', closeFolder);
+
+// Overlay click handler
+overlay.addEventListener('click', () => {
+    hideDynamicIsland();
+    closeFolderForm();
+    hideFolderActionIsland();
+    folderConfirmDialog.style.display = 'none';
+    itemConfirmDialog.style.display = 'none';
+    columnOptions.style.display = 'none';
+    document.querySelectorAll('.item-name-dropdown').forEach(dropdown => {
+        dropdown.style.display = 'none';
+    });
+    if (isSelectionMode) {
+        toggleSelectionMode();
+    }
+});
+
+// Voucher System Functions
+function loadVoucherData(folderId) {
+    const folders = JSON.parse(localStorage.getItem('folders')) || [];
+    const folder = folders.find(f => f.id === folderId);
+
+    if (!folder) return;
+
+    const voucherData = folder.voucherData || {
+        recipientName: '',
+        voucherDate: '',
+        items: []
+    };
+
+    recipientNameInput.value = voucherData.recipientName || '';
+    voucherDateInput.value = voucherData.voucherDate || '';
+    document.getElementById('displayRecipientName').textContent = voucherData.recipientName || '';
+    document.getElementById('displayVoucherDate').textContent = voucherData.voucherDate || '';
+
+    const tableBody = document.querySelector('#voucherTable tbody');
+    tableBody.innerHTML = ''; // Table ကို အရင်ရှင်းလိုက်မယ်
+
+    // အနည်းဆုံး တစ်ခုရှိအောင် ထည့်မယ်
+    if (voucherData.items.length === 0) {
+        addItemToTable('', 0, 0); // ဗလာ row တစ်ခု ထည့်မယ်
+    } else {
+        // ရှိပြီးသား ဒေတာတွေကို ထည့်မယ်
+        voucherData.items.forEach(item => {
+            addItemToTable(item.name || '', item.quantity || 0, item.price || 0);
         });
+    }
 
-        // Add Columns to Table
-        function addColumnsToTable(numColumns) {
-            const tableBody = document.querySelector('#voucherTable tbody');
-            const currentRows = tableBody.querySelectorAll('tr').length;
-            const rowsToAdd = numColumns - currentRows;
+    updateGrandTotal();
+}
 
-            if (rowsToAdd > 0) {
-                for (let i = 0; i < rowsToAdd; i++) {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td class="item-name">
-                            <div class="item-name-container">
-                                <input type="text" placeholder="Item Name">
-                                <div class="item-name-dropdown"></div>
-                            </div>
-                        </td>
-                        <td class="quantity"><input type="number" placeholder="Qty" min="0"></td>
-                        <td class="price"><input type="number" placeholder="Price" min="0"></td>
-                        <td class="total">0 ကျပ်</td>
-                    `;
-                    tableBody.appendChild(row);
-                    initDropdown(row);
-                    attachInputListeners(row);
-                    row.querySelector('.item-name').addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        const rows = Array.from(document.querySelectorAll('#voucherTable tbody tr'));
-                        showDynamicIsland(row, rows.indexOf(row));
-                    });
-                }
-            }
+function saveVoucherData() {
+    if (!currentFolderId) return;
+
+    const items = [];
+    document.querySelectorAll('#voucherTable tbody tr').forEach(row => {
+        const name = row.querySelector('.item-name input').value.trim(); // တန်ဖိုးမရှိရင်လည်း သိမ်းမယ်
+        const quantity = row.querySelector('.quantity input').value.trim();
+        const price = row.querySelector('.price input').value.trim();
+
+        // အနည်းဆုံး တစ်ခုခုရှိရင် သိမ်းမယ်
+        items.push({
+            name: name || '', // တန်ဖိုးမရှိရင် ဗလာကွက်သိမ်းမယ်
+            quantity: quantity ? parseInt(quantity) : 0, // တန်ဖိုးမရှိရင် 0 သိမ်းမယ်
+            price: price ? parseFloat(price) : 0 // တန်ဖိုးမရှိရင် 0 သိမ်းမယ်
+        });
+    });
+
+    const voucherData = {
+        recipientName: recipientNameInput.value,
+        voucherDate: voucherDateInput.value,
+        items
+    };
+
+    const folders = JSON.parse(localStorage.getItem('folders')) || [];
+    const folderIndex = folders.findIndex(f => f.id === currentFolderId);
+
+    if (folderIndex !== -1) {
+        folders[folderIndex].voucherData = voucherData;
+        localStorage.setItem('folders', JSON.stringify(folders));
+    }
+}
+
+// Initialize Dropdown for Item Name
+function initDropdown(row) {
+    const dropdown = row.querySelector('.item-name-dropdown');
+    dropdown.innerHTML = ''; // Clear previous items
+    predefinedItems.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'dropdown-item';
+        div.textContent = item;
+        div.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent click from closing dropdown immediately
+            row.querySelector('.item-name input').value = item;
+            dropdown.style.display = 'none';
+            updateRowTotal(row);
             updateGrandTotal();
-        }
+            saveVoucherData();
+        });
+        dropdown.appendChild(div);
+    });
+}
 
-        // Attach Input Listeners for Table Inputs
-        function attachInputListeners(row) {
-            const itemNameInput = row.querySelector('.item-name input');
-            const dropdown = row.querySelector('.item-name-dropdown');
-            const inputs = row.querySelectorAll('input');
+// Show/Hide Column Options
+addColumnBtn.addEventListener('click', () => {
+    columnOptions.style.display = columnOptions.style.display === 'block' ? 'none' : 'block';
+});
 
-            // Show dropdown on click instead of focus
-            itemNameInput.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent click from closing dropdown
-                initDropdown(row);
-                // Hide all other dropdowns
-                document.querySelectorAll('.item-name-dropdown').forEach(d => {
-                    if (d !== dropdown) d.style.display = 'none';
-                });
-                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-            });
+// Add Columns
+columnOptions.querySelectorAll('.column-option').forEach(option => {
+    option.addEventListener('click', () => {
+        const numColumns = parseInt(option.dataset.columns);
+        addColumnsToTable(numColumns);
+        columnOptions.style.display = 'none';
+        saveVoucherData();
+    });
+});
 
-            // Filter dropdown items based on input
-            itemNameInput.addEventListener('input', () => {
-                const searchTerm = itemNameInput.value.toLowerCase();
-                const items = dropdown.querySelectorAll('.dropdown-item');
-                items.forEach(item => {
-                    if (item.textContent.toLowerCase().includes(searchTerm)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-                updateRowTotal(row);
-                updateGrandTotal();
-                saveVoucherData();
-            });
+// Add Columns to Table
+function addColumnsToTable(numColumns) {
+    const tableBody = document.querySelector('#voucherTable tbody');
+    const currentRows = tableBody.querySelectorAll('tr').length;
+    const rowsToAdd = numColumns - currentRows;
 
-            // Close dropdown when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!row.contains(e.target) && !dropdown.contains(e.target)) {
-                    dropdown.style.display = 'none';
-                }
-            });
-
-            // Update totals on quantity and price input
-            inputs.forEach(input => {
-                if (input !== itemNameInput) {
-                    input.addEventListener('input', () => {
-                        updateRowTotal(row);
-                        updateGrandTotal();
-                        saveVoucherData();
-                    });
-                }
-            });
-        }
-
-        // Update Row Total
-        function updateRowTotal(row) {
-            const quantity = parseInt(row.querySelector('.quantity input').value) || 0;
-            const price = parseFloat(row.querySelector('.price input').value) || 0;
-            const total = (quantity * price).toFixed(0);
-            row.querySelector('.total').textContent = `${total} ကျပ်`;
-        }
-
-        // Add Item to Table (for loading existing data)
-        function addItemToTable(name, quantity, price) {
-            const tableBody = document.querySelector('#voucherTable tbody');
+    if (rowsToAdd > 0) {
+        for (let i = 0; i < rowsToAdd; i++) {
             const row = document.createElement('tr');
-            const total = (quantity * price).toFixed(0);
             row.innerHTML = `
                 <td class="item-name">
                     <div class="item-name-container">
-                        <input type="text" value="${name}" placeholder="Item Name">
+                        <input type="text" placeholder="Item Name">
                         <div class="item-name-dropdown"></div>
                     </div>
                 </td>
-                <td class="quantity"><input type="number" value="${quantity}" placeholder="Qty" min="0"></td>
-                <td class="price"><input type="number" value="${price}" placeholder="Price" min="0"></td>
-                <td class="total">${total} ကျပ်</td>
+                <td class="quantity"><input type="number" placeholder="Qty" min="0"></td>
+                <td class="price"><input type="number" placeholder="Price" min="0"></td>
+                <td class="total">0 ကျပ်</td>
             `;
             tableBody.appendChild(row);
             initDropdown(row);
@@ -1302,85 +1233,175 @@ if ('serviceWorker' in navigator) {
                 showDynamicIsland(row, rows.indexOf(row));
             });
         }
+    }
+    updateGrandTotal();
+}
 
-        // Update Grand Total
-        function updateGrandTotal() {
-            const rows = document.querySelectorAll('#voucherTable tbody tr');
-            let grandTotal = 0;
-            rows.forEach(row => {
-                const total = parseFloat(row.querySelector('.total').textContent.replace(' ကျပ်', '')) || 0;
-                grandTotal += total;
-            });
-            document.getElementById('grandTotal').textContent = `Grand Total: ${grandTotal.toFixed(0)} ကျပ်`;
-            saveVoucherData();
-        }
+// Attach Input Listeners for Table Inputs
+function attachInputListeners(row) {
+    const itemNameInput = row.querySelector('.item-name input');
+    const dropdown = row.querySelector('.item-name-dropdown');
+    const inputs = row.querySelectorAll('input');
 
-        // Show/Hide Dynamic Island
-        function showDynamicIsland(row, index) {
-            selectedRow = row;
-            editIndex = index;
-            dynamicIsland.classList.add('visible');
-            overlay.style.display = 'block';
-            addColumnBtn.style.opacity = '0';
-            setTimeout(() => addColumnBtn.style.display = 'none', 400);
-        }
-
-        function hideDynamicIsland() {
-            dynamicIsland.classList.remove('visible');
-            overlay.style.display = 'none';
-            addColumnBtn.style.display = 'block';
-            setTimeout(() => addColumnBtn.style.opacity = '1', 50);
-            selectedRow = null;
-            editIndex = null;
-        }
-
-        // Dynamic Island Actions
-        islandDeleteBtn.addEventListener('click', () => {
-            itemConfirmDialog.style.display = 'block';
-            overlay.style.display = 'block';
+    // Show dropdown on click instead of focus
+    itemNameInput.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent click from closing dropdown
+        initDropdown(row);
+        // Hide all other dropdowns
+        document.querySelectorAll('.item-name-dropdown').forEach(d => {
+            if (d !== dropdown) d.style.display = 'none';
         });
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
 
-        confirmItemDelete.addEventListener('click', () => {
-            if (selectedRow) {
-                selectedRow.remove();
-                updateGrandTotal();
-                hideDynamicIsland();
-                itemConfirmDialog.style.display = 'none';
-                overlay.style.display = 'none';
-                saveVoucherData();
+    // Filter dropdown items based on input
+    itemNameInput.addEventListener('input', () => {
+        const searchTerm = itemNameInput.value.toLowerCase();
+        const items = dropdown.querySelectorAll('.dropdown-item');
+        items.forEach(item => {
+            if (item.textContent.toLowerCase().includes(searchTerm)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
             }
         });
+        updateRowTotal(row);
+        updateGrandTotal();
+        saveVoucherData();
+    });
 
-        cancelItemDelete.addEventListener('click', () => {
-            itemConfirmDialog.style.display = 'none';
-            overlay.style.display = 'none';
-        });
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!row.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.style.display = 'none';
+        }
+    });
 
-        // Details Form
-        document.getElementById('detailsForm').addEventListener('input', () => {
-            document.getElementById('displayRecipientName').textContent = recipientNameInput.value;
-            document.getElementById('displayVoucherDate').textContent = voucherDateInput.value;
-            saveVoucherData();
-        });
-
-        // Save Voucher as Image
-        saveBtn.addEventListener('click', () => {
-            const voucher = document.getElementById('voucher');
-            html2canvas(voucher, { 
-                useCORS: true, 
-                scale: window.devicePixelRatio || 2
-            }).then(canvas => {
-                canvas.toBlob(blob => {
-                    const link = document.createElement('a');
-                    link.download = `voucher_${recipientNameInput.value || 'unnamed'}_${new Date().toISOString().split('T')[0]}.jpg`;
-                    link.href = URL.createObjectURL(blob);
-                    link.click();
-                    URL.revokeObjectURL(link.href);
-                }, 'image/jpeg', 0.95);
-            }).catch(error => {
-                alert('Voucher ကို capture လုပ်မရပါ - ' + error);
+    // Update totals on quantity and price input
+    inputs.forEach(input => {
+        if (input !== itemNameInput) {
+            input.addEventListener('input', () => {
+                updateRowTotal(row);
+                updateGrandTotal();
+                saveVoucherData();
             });
-        });
+        }
+    });
+}
+
+// Update Row Total
+function updateRowTotal(row) {
+    const quantity = parseInt(row.querySelector('.quantity input').value) || 0;
+    const price = parseFloat(row.querySelector('.price input').value) || 0;
+    const total = (quantity * price).toFixed(0);
+    row.querySelector('.total').textContent = `${total} ကျပ်`;
+}
+
+// Add Item to Table (for loading existing data)
+function addItemToTable(name, quantity, price) {
+    const tableBody = document.querySelector('#voucherTable tbody');
+    const row = document.createElement('tr');
+    const total = ((quantity || 0) * (price || 0)).toFixed(0);
+    row.innerHTML = `
+        <td class="item-name">
+            <div class="item-name-container">
+                <input type="text" value="${name}" placeholder="Item Name">
+                <div class="item-name-dropdown"></div>
+            </div>
+        </td>
+        <td class="quantity"><input type="number" value="${quantity || ''}" placeholder="Qty" min="0"></td>
+        <td class="price"><input type="number" value="${price || ''}" placeholder="Price" min="0"></td>
+        <td class="total">${total} ကျပ်</td>
+    `;
+    tableBody.appendChild(row);
+    initDropdown(row);
+    attachInputListeners(row);
+    row.querySelector('.item-name').addEventListener('click', (e) => {
+        e.stopPropagation();
+        const rows = Array.from(document.querySelectorAll('#voucherTable tbody tr'));
+        showDynamicIsland(row, rows.indexOf(row));
+    });
+}
+
+// Update Grand Total
+function updateGrandTotal() {
+    const rows = document.querySelectorAll('#voucherTable tbody tr');
+    let grandTotal = 0;
+    rows.forEach(row => {
+        const total = parseFloat(row.querySelector('.total').textContent.replace(' ကျပ်', '')) || 0;
+        grandTotal += total;
+    });
+    document.getElementById('grandTotal').textContent = `Grand Total: ${grandTotal.toFixed(0)} ကျပ်`;
+    saveVoucherData();
+}
+
+// Show/Hide Dynamic Island
+function showDynamicIsland(row, index) {
+    selectedRow = row;
+    editIndex = index;
+    dynamicIsland.classList.add('visible');
+    overlay.style.display = 'block';
+    addColumnBtn.style.opacity = '0';
+    setTimeout(() => addColumnBtn.style.display = 'none', 400);
+}
+
+function hideDynamicIsland() {
+    dynamicIsland.classList.remove('visible');
+    overlay.style.display = 'none';
+    addColumnBtn.style.display = 'block';
+    setTimeout(() => addColumnBtn.style.opacity = '1', 50);
+    selectedRow = null;
+    editIndex = null;
+}
+
+// Dynamic Island Actions
+islandDeleteBtn.addEventListener('click', () => {
+    itemConfirmDialog.style.display = 'block';
+    overlay.style.display = 'block';
+});
+
+confirmItemDelete.addEventListener('click', () => {
+    if (selectedRow) {
+        selectedRow.remove();
+        updateGrandTotal();
+        hideDynamicIsland();
+        itemConfirmDialog.style.display = 'none';
+        overlay.style.display = 'none';
+        saveVoucherData();
+    }
+});
+
+cancelItemDelete.addEventListener('click', () => {
+    itemConfirmDialog.style.display = 'none';
+    overlay.style.display = 'none';
+});
+
+// Details Form
+document.getElementById('detailsForm').addEventListener('input', () => {
+    document.getElementById('displayRecipientName').textContent = recipientNameInput.value;
+    document.getElementById('displayVoucherDate').textContent = voucherDateInput.value;
+    saveVoucherData();
+});
+
+// Save Voucher as Image
+saveBtn.addEventListener('click', () => {
+    const voucher = document.getElementById('voucher');
+    html2canvas(voucher, { 
+        useCORS: true, 
+        scale: window.devicePixelRatio || 2
+    }).then(canvas => {
+        canvas.toBlob(blob => {
+            const link = document.createElement('a');
+            link.download = `voucher_${recipientNameInput.value || 'unnamed'}_${new Date().toISOString().split('T')[0]}.jpg`;
+            link.href = URL.createObjectURL(blob);
+            link.click();
+            URL.revokeObjectURL(link.href);
+        }, 'image/jpeg', 0.95);
+    }).catch(error => {
+        alert('Voucher ကို capture လုပ်မရပါ - ' + error);
+    });
+});
+        
     </script>
 
 </body></html>
