@@ -1,0 +1,19 @@
+{
+    "name": "Maybal Voucher",
+    "short_name": "VGmm",
+    "description": "A voucher generator app by Maybal",
+    "start_url": "/mbs-vg081/",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "/mbs-vg081/icons/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/mbs-vg081/icons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
