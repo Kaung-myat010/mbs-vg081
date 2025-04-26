@@ -809,10 +809,7 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// Check if the browser is not Safari
-if (!/Safari/.test(navigator.userAgent) || /Chrome/.test(navigator.userAgent)) {
-    alert("ဒီအက်ပ်ကို iPhone မှာ PWA အဖြစ်ထည့်သွင်းဖို့ Safari ဘရောက်ဆာကို အသုံးပြုပေးပါ။");
-}
+
 
 // DOM Elements
 const addColumnBtn = document.getElementById('addColumnBtn');
@@ -1398,7 +1395,7 @@ saveBtn.addEventListener('click', () => {
             URL.revokeObjectURL(link.href);
         }, 'image/jpeg', 0.95);
     }).catch(error => {
-        alert('Voucher ကို capture လုပ်မရပါ - ' + error);
+        alert('Voucher ကို saveမရပါ - ' + error);
     });
 });
         
