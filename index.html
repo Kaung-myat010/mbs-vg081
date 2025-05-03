@@ -11,15 +11,18 @@
     <link rel="manifest" href="/mbs-vg081/manifest.json">
     <title>Maybal Voucher</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Padauk&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar&amp;display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'Padauk', 'Myanmar Text', 'Noto Sans Myanmar', sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', 'Myanmar Text', sans-serif;
+            font-family: 'Segoe UI', 'Padauk', 'Myanmar Text', 'Noto Sans Myanmar', sans-serif;
             background: linear-gradient(45deg, rgba(247, 0, 255, 0.658), rgba(104, 0, 241, 0.753), rgba(255, 0, 106, 0.774), rgba(247, 0, 255, 0.767));
             background-size: 600% 600%;
             animation: gradientBG 15s ease infinite;
@@ -57,6 +60,7 @@
             text-shadow: 0 0 8px #ffffffa4;
             margin-bottom: 15px;
             margin-top: 40px;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         h2 {
@@ -65,6 +69,7 @@
             text-shadow: 0 0 8px #ffffffa4;
             margin-bottom: 10px;
             margin-top: 60px;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         .aaa {
@@ -87,6 +92,7 @@
             border: 1px solid #ddd;
             background: rgba(255, 255, 255, 0.7);
             color: #3A3A3A;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         #addColumnContainer {
@@ -108,6 +114,7 @@
             transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
             width: 120px;
             text-align: center;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         #addColumnBtn:hover {
@@ -124,6 +131,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             display: none;
             z-index: 20;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         .column-option {
@@ -181,6 +189,10 @@
             background: linear-gradient(45deg, rgba(255, 0, 106, 0.774), rgba(247, 0, 255, 0.767));
         }
 
+        .save-icon {
+            background: linear-gradient(45deg, rgba(247, 0, 255, 0.658), rgba(104, 0, 241, 0.753));
+        }
+
         #voucher {
             
             
@@ -225,6 +237,7 @@
             margin-bottom: 10px;
             font-weight: bold;
             color: rgba(104, 0, 241, 0.753);
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         .location {
@@ -234,6 +247,7 @@
             font-weight: bold;
             color: rgba(104, 0, 241, 0.753);
             z-index: 2;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         .location-text i {
@@ -250,6 +264,7 @@
             margin-right: 8px;
             color: rgba(104, 0, 241, 0.753);
             display: flex;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         .phone {
@@ -258,6 +273,7 @@
             display: flex;
             align-items: center;
             padding-left: 15px;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         .phone i {
@@ -272,6 +288,7 @@
             border-radius: 10px;
             overflow: hidden;
             margin-bottom: 10px;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         th, td {
@@ -279,11 +296,13 @@
             text-align: center;
             border-bottom: 1px solid #ddd;
             background: linear-gradient(45deg, #ffe6ffb2, #f5e4ffad);
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         th {
             background: linear-gradient(45deg, rgba(104, 0, 241, 0.753), rgba(96, 0, 223, 0.753));
             color: white;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         /* Column Width Adjustments */
@@ -323,6 +342,7 @@
             text-align: center;
             color: #2c2c2c;
             font-size: 14px;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         td input:focus {
@@ -358,6 +378,7 @@
             z-index: 40;
             display: none;
             font-size: 16px;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         .dropdown-item {
@@ -375,6 +396,7 @@
             text-align: center;
             margin-top: 10px;
             color: #2c2c2c;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         #saveBtn {
@@ -389,6 +411,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
             transition: 0.3s ease;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         #saveBtn:hover {
@@ -433,6 +456,7 @@
             font-weight: bold;
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: 0.3s ease;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         #createFolderBtn:hover, #actionFolderBtn:hover {
@@ -450,6 +474,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: 0.3s ease;
             display: none;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         #backToFoldersBtn:hover {
@@ -491,6 +516,7 @@
             font-weight: bold;
             color: #3A3A3A;
             word-break: break-word;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         .folder-checkbox {
@@ -550,6 +576,7 @@
             font-weight: bold;
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: 0.3s ease;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         #folderForm button[type="submit"]:hover {
@@ -633,7 +660,7 @@
         }
 
         /* Confirmation Dialogs */
-        #folderConfirmDialog, #itemConfirmDialog {
+        #folderConfirmDialog, #itemConfirmDialog, #saveOptionsDialog {
             display: none;
             position: fixed;
             top: 50%;
@@ -648,24 +675,26 @@
             width: 300px;
         }
 
-        #folderConfirmDialog p, #itemConfirmDialog p {
+        #folderConfirmDialog p, #itemConfirmDialog p, #saveOptionsDialog p {
             color: #242424;
             margin-bottom: 20px;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
-        #folderConfirmDialog .dialog-buttons, #itemConfirmDialog .dialog-buttons {
+        #folderConfirmDialog .dialog-buttons, #itemConfirmDialog .dialog-buttons, #saveOptionsDialog .dialog-buttons {
             display: flex;
             gap: 10px;
             justify-content: center;
         }
 
-        #folderConfirmDialog button, #itemConfirmDialog button {
+        #folderConfirmDialog button, #itemConfirmDialog button, #saveOptionsDialog button {
             padding: 8px 15px;
             border-radius: 8px;
             border: none;
             cursor: pointer;
             color: white;
             font-weight: bold;
+            font-family: 'Padauk', 'Myanmar Text', sans-serif;
         }
 
         .confirm-btn {
@@ -676,11 +705,19 @@
             background: linear-gradient(45deg, rgba(247, 0, 255, 0.658), rgba(104, 0, 241, 0.753));
         }
 
+        .save-jpg-btn {
+            background: linear-gradient(45deg, rgba(247, 0, 255, 0.658), rgba(104, 0, 241, 0.753));
+        }
+
+        .save-png-btn {
+            background: linear-gradient(-45deg, rgba(247, 0, 255, 0.658), rgba(104, 0, 241, 0.753));
+        }
+
         @media (max-width: 600px) {
             table {
                 font-size: 12px;
             }
-            #dynamicIsland, #folderFormContainer, #folderActionIsland, #folderConfirmDialog, #itemConfirmDialog {
+            #dynamicIsland, #folderFormContainer, #folderActionIsland, #folderConfirmDialog, #itemConfirmDialog, #saveOptionsDialog {
                 width: calc(100% - 40px);
             }
             #folderList {
@@ -758,6 +795,7 @@
             </div>
             <div id="dynamicIsland">
                 <div class="action-icon delete-icon" id="islandDeleteBtn" title="Delete">🗑️</div>
+                <div class="action-icon save-icon" id="islandSaveBtn" title="Save Options">💾</div>
             </div>
             <div id="voucher">
                 <h1 style="font-family:helvetica">Maybal</h1>
@@ -792,434 +830,525 @@
                 <button id="cancelItemDelete" class="cancel-btn">Cancel</button>
             </div>
         </div>
+        <!-- Save Options Dialog -->
+        <div id="saveOptionsDialog">
+            <p>Choose save format:</p>
+            <div class="dialog-buttons">
+                <button id="saveAsJpg" class="save-jpg-btn">Save as JPG</button>
+                <button id="saveAsPng" class="save-png-btn">Save as PNG</button>
+            </div>
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
-
         // Service Worker မှတ်ပုံတင်ခြင်း
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/mbs-vg081/service-worker.js')
-            .then(registration => {
-                console.log('Service Worker registered with scope:', registration.scope);
-            })
-            .catch(error => {
-                console.error('Service Worker registration failed:', error);
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/mbs-vg081/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.error('Service Worker registration failed:', error);
+                    });
             });
-    });
-}
+        }
 
+        // DOM Elements
+        const addColumnBtn = document.getElementById('addColumnBtn');
+        const columnOptions = document.getElementById('columnOptions');
+        const overlay = document.getElementById('overlay');
+        const dynamicIsland = document.getElementById('dynamicIsland');
+        const islandDeleteBtn = document.getElementById('islandDeleteBtn');
+        const islandSaveBtn = document.getElementById('islandSaveBtn');
+        const recipientNameInput = document.getElementById('recipientName');
+        const voucherDateInput = document.getElementById('voucherDate');
+        const saveBtn = document.getElementById('saveBtn');
+        const folderSystem = document.getElementById('folderSystem');
+        const voucherSystem = document.getElementById('voucherSystem');
+        const createFolderBtn = document.getElementById('createFolderBtn');
+        const actionFolderBtn = document.getElementById('actionFolderBtn');
+        const backToFoldersBtn = document.getElementById('backToFoldersBtn');
+        const folderList = document.getElementById('folderList');
+        const folderFormContainer = document.getElementById('folderFormContainer');
+        const folderForm = document.getElementById('folderForm');
+        const folderCloseFormBtn = document.getElementById('folderCloseFormBtn');
+        const folderFormSubmitBtn = document.getElementById('folderFormSubmitBtn');
+        const folderActionIsland = document.getElementById('folderActionIsland');
+        const folderIslandEditBtn = document.getElementById('folderIslandEditBtn');
+        const folderIslandDeleteBtn = document.getElementById('folderIslandDeleteBtn');
+        const closeVoucherSystemBtn = document.getElementById('closeVoucherSystemBtn');
+        const folderConfirmDialog = document.getElementById('folderConfirmDialog');
+        const confirmFolderDelete = document.getElementById('confirmFolderDelete');
+        const cancelFolderDelete = document.getElementById('cancelFolderDelete');
+        const itemConfirmDialog = document.getElementById('itemConfirmDialog');
+        const confirmItemDelete = document.getElementById('confirmItemDelete');
+        const cancelItemDelete = document.getElementById('cancelItemDelete');
+        const saveOptionsDialog = document.getElementById('saveOptionsDialog');
+        const saveAsJpg = document.getElementById('saveAsJpg');
+        const saveAsPng = document.getElementById('saveAsPng');
 
+        let selectedRow = null;
+        let editIndex = null;
+        let selectedFolder = null;
+        let editFolderIndex = null;
+        let currentFolderId = null;
+        let isSelectionMode = false;
+        let selectedFolders = [];
 
-// DOM Elements
-const addColumnBtn = document.getElementById('addColumnBtn');
-const columnOptions = document.getElementById('columnOptions');
-const overlay = document.getElementById('overlay');
-const dynamicIsland = document.getElementById('dynamicIsland');
-const islandDeleteBtn = document.getElementById('islandDeleteBtn');
-const recipientNameInput = document.getElementById('recipientName');
-const voucherDateInput = document.getElementById('voucherDate');
-const saveBtn = document.getElementById('saveBtn');
-const folderSystem = document.getElementById('folderSystem');
-const voucherSystem = document.getElementById('voucherSystem');
-const createFolderBtn = document.getElementById('createFolderBtn');
-const actionFolderBtn = document.getElementById('actionFolderBtn');
-const backToFoldersBtn = document.getElementById('backToFoldersBtn');
-const folderList = document.getElementById('folderList');
-const folderFormContainer = document.getElementById('folderFormContainer');
-const folderForm = document.getElementById('folderForm');
-const folderCloseFormBtn = document.getElementById('folderCloseFormBtn');
-const folderFormSubmitBtn = document.getElementById('folderFormSubmitBtn');
-const folderActionIsland = document.getElementById('folderActionIsland');
-const folderIslandEditBtn = document.getElementById('folderIslandEditBtn');
-const folderIslandDeleteBtn = document.getElementById('folderIslandDeleteBtn');
-const closeVoucherSystemBtn = document.getElementById('closeVoucherSystemBtn');
-const folderConfirmDialog = document.getElementById('folderConfirmDialog');
-const confirmFolderDelete = document.getElementById('confirmFolderDelete');
-const cancelFolderDelete = document.getElementById('cancelFolderDelete');
-const itemConfirmDialog = document.getElementById('itemConfirmDialog');
-const confirmItemDelete = document.getElementById('confirmItemDelete');
-const cancelItemDelete = document.getElementById('cancelItemDelete');
+        // Predefined item names
+        const predefinedItems = [
+            "ကော်ပိတ်",
+            "ကချင်one set",
+            "ဇာone set",
+            "ပါတိတ်one set",
+            "စီးကွင့်",
+            "Hand Made",
+            "ချိတ်ထမီ",
+            "ပတ်ထမီ",
+            "No Bra",
+            "ဂါဝန်",
+            "နှစ်ထပ်ချုပ်",
+            "ရင်ဖုန်း",
+            "နောက်ဇစ်"
+        ];
 
-let selectedRow = null;
-let editIndex = null;
-let selectedFolder = null;
-let editFolderIndex = null;
-let currentFolderId = null;
-let isSelectionMode = false;
-let selectedFolders = [];
+        // Initialize
+        loadFolders();
 
-// Predefined item names
-const predefinedItems = [
-    "ကော်ပိတ်",
-    "ကချင်one set",
-    "ဇာone set",
-    "ပါတိတ်one set",
-    "စီးကွင့်",
-    "Hand Made",
-    "ချိတ်ထမီ",
-    "ပတ်ထမီ",
-    "No Bra",
-    "ဂါဝန်",
-    "နှစ်ထပ်ချုပ်",
-    "ရင်ဖုန်း",
-    "နောက်ဇစ်"
-];
+        // Folder System Functions
+        function loadFolders() {
+            const folders = JSON.parse(localStorage.getItem('folders')) || [];
+            folderList.innerHTML = '';
 
-// Initialize
-loadFolders();
+            if (folders.length === 0) {
+                folderList.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #666;">No folders created yet</p>';
+            } else {
+                folders.forEach((folder, index) => {
+                    const folderElement = document.createElement('div');
+                    folderElement.className = 'folder';
+                    folderElement.dataset.folderId = folder.id;
+                    folderElement.innerHTML = `
+                        <input type="checkbox" class="folder-checkbox" data-folder-id="${folder.id}">
+                        <div class="folder-icon">📁</div>
+                        <div class="folder-name">${folder.name}</div>
+                    `;
+                    folderElement.addEventListener('click', (e) => {
+                        if (isSelectionMode) {
+                            e.preventDefault();
+                            const checkbox = folderElement.querySelector('.folder-checkbox');
+                            checkbox.checked = !checkbox.checked;
+                            toggleFolderSelection(folder.id, index);
+                        } else {
+                            openFolder(folder.id);
+                        }
+                    });
+                    folderList.appendChild(folderElement);
+                });
+            }
+        }
 
-// Folder System Functions
-function loadFolders() {
-    const folders = JSON.parse(localStorage.getItem('folders')) || [];
-    folderList.innerHTML = '';
-
-    if (folders.length === 0) {
-        folderList.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #666;">No folders created yet</p>';
-    } else {
-        folders.forEach((folder, index) => {
-            const folderElement = document.createElement('div');
-            folderElement.className = 'folder';
-            folderElement.dataset.folderId = folder.id;
-            folderElement.innerHTML = `
-                <input type="checkbox" class="folder-checkbox" data-folder-id="${folder.id}">
-                <div class="folder-icon">📁</div>
-                <div class="folder-name">${folder.name}</div>
-            `;
-            folderElement.addEventListener('click', (e) => {
-                if (isSelectionMode) {
-                    e.preventDefault();
-                    const checkbox = folderElement.querySelector('.folder-checkbox');
-                    checkbox.checked = !checkbox.checked;
-                    toggleFolderSelection(folder.id, index);
-                } else {
-                    openFolder(folder.id);
-                }
+        function toggleSelectionMode() {
+            isSelectionMode = !isSelectionMode;
+            selectedFolders = [];
+            folderList.classList.toggle('selection-mode', isSelectionMode);
+            actionFolderBtn.textContent = isSelectionMode ? 'Done' : 'Actions';
+            
+            const checkboxes = document.querySelectorAll('.folder-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
             });
-            folderList.appendChild(folderElement);
+
+            if (!isSelectionMode) {
+                hideFolderActionIsland();
+            }
+        }
+
+        function toggleFolderSelection(folderId, index) {
+            const folderElement = document.querySelector(`.folder[data-folder-id="${folderId}"]`);
+            const isSelected = selectedFolders.some(f => f.id === folderId);
+
+            if (isSelected) {
+                selectedFolders = selectedFolders.filter(f => f.id !== folderId);
+                folderElement.classList.remove('selected');
+            } else {
+                const folders = JSON.parse(localStorage.getItem('folders')) || [];
+                selectedFolders.push({ id: folderId, index, name: folders[index].name });
+                folderElement.classList.add('selected');
+            }
+
+            if (selectedFolders.length > 0) {
+                showFolderActionIsland();
+            } else {
+                hideFolderActionIsland();
+            }
+        }
+
+        function openFolder(folderId) {
+            currentFolderId = folderId;
+            folderSystem.classList.remove('visible');
+            voucherSystem.classList.add('visible');
+            backToFoldersBtn.style.display = 'block';
+            loadVoucherData(folderId);
+        }
+
+        function closeFolder() {
+            currentFolderId = null;
+            folderSystem.classList.add('visible');
+            voucherSystem.classList.remove('visible');
+            backToFoldersBtn.style.display = 'none';
+            saveVoucherData();
+            if (isSelectionMode) {
+                toggleSelectionMode();
+            }
+        }
+
+        function showFolderForm(isEdit = false, folder = null) {
+            folderFormContainer.classList.add('visible');
+            overlay.style.display = 'block';
+            folderFormSubmitBtn.textContent = isEdit ? 'Update Folder' : 'Create Folder';
+            
+            if (isEdit && folder) {
+                document.getElementById('folderName').value = folder.name;
+            } else {
+                document.getElementById('folderName').value = '';
+            }
+        }
+
+        function closeFolderForm() {
+            folderFormContainer.classList.remove('visible');
+            overlay.style.display = 'none';
+            folderForm.reset();
+            editFolderIndex = null;
+            hideFolderActionIsland();
+        }
+
+        function showFolderActionIsland() {
+            folderActionIsland.classList.add('visible');
+            overlay.style.display = 'block';
+        }
+
+        function hideFolderActionIsland() {
+            folderActionIsland.classList.remove('visible');
+            overlay.style.display = 'none';
+            selectedFolders = [];
+            const folders = document.querySelectorAll('.folder');
+            folders.forEach(folder => folder.classList.remove('selected'));
+            const checkboxes = document.querySelectorAll('.folder-checkbox');
+            checkboxes.forEach(checkbox => checkbox.checked = false);
+        }
+
+        // Folder Form Submission
+        folderForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const name = document.getElementById('folderName').value.trim();
+            const folders = JSON.parse(localStorage.getItem('folders')) || [];
+
+            if (name === '') {
+                alert('Folder name cannot be empty');
+                return;
+            }
+
+            if (folders.some(f => f.name === name && f.id !== (editFolderIndex !== null ? folders[editFolderIndex].id : null))) {
+                alert('Folder name already exists');
+                return;
+            }
+
+            if (editFolderIndex !== null) {
+                folders[editFolderIndex].name = name;
+            } else {
+                const newFolder = {
+                    id: Date.now().toString(),
+                    name: name,
+                    voucherData: {
+                        recipientName: '',
+                        voucherDate: '',
+                        items: []
+                    }
+                };
+                folders.push(newFolder);
+            }
+
+            localStorage.setItem('folders', JSON.stringify(folders));
+            closeFolderForm();
+            loadFolders();
+            if (isSelectionMode) {
+                toggleSelectionMode();
+            }
         });
-    }
-}
 
-function toggleSelectionMode() {
-    isSelectionMode = !isSelectionMode;
-    selectedFolders = [];
-    folderList.classList.toggle('selection-mode', isSelectionMode);
-    actionFolderBtn.textContent = isSelectionMode ? 'Done' : 'Actions';
-    
-    const checkboxes = document.querySelectorAll('.folder-checkbox');
-    checkboxes.forEach(checkbox => {
-        checkbox.checked = false;
-    });
+        // Folder Action Island Actions
+        folderIslandEditBtn.addEventListener('click', () => {
+            if (selectedFolders.length === 1) {
+                editFolderIndex = selectedFolders[0].index;
+                showFolderForm(true, { name: selectedFolders[0].name });
+                toggleSelectionMode();
+            } else {
+                alert('Please select exactly one folder to edit.');
+            }
+        });
 
-    if (!isSelectionMode) {
-        hideFolderActionIsland();
-    }
-}
+        folderIslandDeleteBtn.addEventListener('click', () => {
+            if (selectedFolders.length > 0) {
+                folderConfirmDialog.style.display = 'block';
+                overlay.style.display = 'block';
+            } else {
+                alert('Please select at least one folder to delete.');
+            }
+        });
 
-function toggleFolderSelection(folderId, index) {
-    const folderElement = document.querySelector(`.folder[data-folder-id="${folderId}"]`);
-    const isSelected = selectedFolders.some(f => f.id === folderId);
+        confirmFolderDelete.addEventListener('click', () => {
+            if (selectedFolders.length > 0) {
+                let folders = JSON.parse(localStorage.getItem('folders')) || [];
+                selectedFolders.forEach(folder => {
+                    folders = folders.filter(f => f.id !== folder.id);
+                });
+                localStorage.setItem('folders', JSON.stringify(folders));
+                hideFolderActionIsland();
+                loadFolders();
+                folderConfirmDialog.style.display = 'none';
+                overlay.style.display = 'none';
+                if (isSelectionMode) {
+                    toggleSelectionMode();
+                }
+            }
+        });
 
-    if (isSelected) {
-        selectedFolders = selectedFolders.filter(f => f.id !== folderId);
-        folderElement.classList.remove('selected');
-    } else {
-        const folders = JSON.parse(localStorage.getItem('folders')) || [];
-        selectedFolders.push({ id: folderId, index, name: folders[index].name });
-        folderElement.classList.add('selected');
-    }
+        cancelFolderDelete.addEventListener('click', () => {
+            folderConfirmDialog.style.display = 'none';
+            overlay.style.display = 'none';
+        });
 
-    if (selectedFolders.length > 0) {
-        showFolderActionIsland();
-    } else {
-        hideFolderActionIsland();
-    }
-}
+        // Action Folder Button
+        actionFolderBtn.addEventListener('click', toggleSelectionMode);
 
-function openFolder(folderId) {
-    currentFolderId = folderId;
-    folderSystem.classList.remove('visible');
-    voucherSystem.classList.add('visible');
-    backToFoldersBtn.style.display = 'block';
-    loadVoucherData(folderId);
-}
+        // Create folder button
+        createFolderBtn.addEventListener('click', () => showFolderForm());
 
-function closeFolder() {
-    currentFolderId = null;
-    folderSystem.classList.add('visible');
-    voucherSystem.classList.remove('visible');
-    backToFoldersBtn.style.display = 'none';
-    saveVoucherData();
-    if (isSelectionMode) {
-        toggleSelectionMode();
-    }
-}
+        // Back to folders button
+        backToFoldersBtn.addEventListener('click', closeFolder);
 
-function showFolderForm(isEdit = false, folder = null) {
-    folderFormContainer.classList.add('visible');
-    overlay.style.display = 'block';
-    folderFormSubmitBtn.textContent = isEdit ? 'Update Folder' : 'Create Folder';
-    
-    if (isEdit && folder) {
-        document.getElementById('folderName').value = folder.name;
-    } else {
-        document.getElementById('folderName').value = '';
-    }
-}
+        // Close voucher system button
+        closeVoucherSystemBtn.addEventListener('click', closeFolder);
 
-function closeFolderForm() {
-    folderFormContainer.classList.remove('visible');
-    overlay.style.display = 'none';
-    folderForm.reset();
-    editFolderIndex = null;
-    hideFolderActionIsland();
-}
+        // Overlay click handler
+        overlay.addEventListener('click', () => {
+            hideDynamicIsland();
+            closeFolderForm();
+            hideFolderActionIsland();
+            folderConfirmDialog.style.display = 'none';
+            itemConfirmDialog.style.display = 'none';
+            saveOptionsDialog.style.display = 'none';
+            columnOptions.style.display = 'none';
+            document.querySelectorAll('.item-name-dropdown').forEach(dropdown => {
+                dropdown.style.display = 'none';
+            });
+            if (isSelectionMode) {
+                toggleSelectionMode();
+            }
+        });
 
-function showFolderActionIsland() {
-    folderActionIsland.classList.add('visible');
-    overlay.style.display = 'block';
-}
+        // Voucher System Functions
+        function loadVoucherData(folderId) {
+            const folders = JSON.parse(localStorage.getItem('folders')) || [];
+            const folder = folders.find(f => f.id === folderId);
 
-function hideFolderActionIsland() {
-    folderActionIsland.classList.remove('visible');
-    overlay.style.display = 'none';
-    selectedFolders = [];
-    const folders = document.querySelectorAll('.folder');
-    folders.forEach(folder => folder.classList.remove('selected'));
-    const checkboxes = document.querySelectorAll('.folder-checkbox');
-    checkboxes.forEach(checkbox => checkbox.checked = false);
-}
+            if (!folder) return;
 
-// Folder Form Submission
-folderForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const name = document.getElementById('folderName').value.trim();
-    const folders = JSON.parse(localStorage.getItem('folders')) || [];
-
-    if (name === '') {
-        alert('Folder name cannot be empty');
-        return;
-    }
-
-    if (folders.some(f => f.name === name && f.id !== (editFolderIndex !== null ? folders[editFolderIndex].id : null))) {
-        alert('Folder name already exists');
-        return;
-    }
-
-    if (editFolderIndex !== null) {
-        folders[editFolderIndex].name = name;
-    } else {
-        const newFolder = {
-            id: Date.now().toString(),
-            name: name,
-            voucherData: {
+            const voucherData = folder.voucherData || {
                 recipientName: '',
                 voucherDate: '',
                 items: []
+            };
+
+            recipientNameInput.value = voucherData.recipientName || '';
+            voucherDateInput.value = voucherData.voucherDate || '';
+            document.getElementById('displayRecipientName').textContent = voucherData.recipientName || '';
+            document.getElementById('displayVoucherDate').textContent = voucherData.voucherDate || '';
+
+            const tableBody = document.querySelector('#voucherTable tbody');
+            tableBody.innerHTML = '';
+
+            if (voucherData.items.length === 0) {
+                addItemToTable('', 0, 0);
+            } else {
+                voucherData.items.forEach(item => {
+                    addItemToTable(item.name || '', item.quantity || 0, item.price || 0);
+                });
             }
-        };
-        folders.push(newFolder);
-    }
 
-    localStorage.setItem('folders', JSON.stringify(folders));
-    closeFolderForm();
-    loadFolders();
-    if (isSelectionMode) {
-        toggleSelectionMode();
-    }
-});
-
-// Folder Action Island Actions
-folderIslandEditBtn.addEventListener('click', () => {
-    if (selectedFolders.length === 1) {
-        editFolderIndex = selectedFolders[0].index;
-        showFolderForm(true, { name: selectedFolders[0].name });
-        toggleSelectionMode();
-    } else {
-        alert('Please select exactly one folder to edit.');
-    }
-});
-
-folderIslandDeleteBtn.addEventListener('click', () => {
-    if (selectedFolders.length > 0) {
-        folderConfirmDialog.style.display = 'block';
-        overlay.style.display = 'block';
-    } else {
-        alert('Please select at least one folder to delete.');
-    }
-});
-
-confirmFolderDelete.addEventListener('click', () => {
-    if (selectedFolders.length > 0) {
-        let folders = JSON.parse(localStorage.getItem('folders')) || [];
-        selectedFolders.forEach(folder => {
-            folders = folders.filter(f => f.id !== folder.id);
-        });
-        localStorage.setItem('folders', JSON.stringify(folders));
-        hideFolderActionIsland();
-        loadFolders();
-        folderConfirmDialog.style.display = 'none';
-        overlay.style.display = 'none';
-        if (isSelectionMode) {
-            toggleSelectionMode();
-        }
-    }
-});
-
-cancelFolderDelete.addEventListener('click', () => {
-    folderConfirmDialog.style.display = 'none';
-    overlay.style.display = 'none';
-});
-
-// Action Folder Button
-actionFolderBtn.addEventListener('click', toggleSelectionMode);
-
-// Create folder button
-createFolderBtn.addEventListener('click', () => showFolderForm());
-
-// Back to folders button
-backToFoldersBtn.addEventListener('click', closeFolder);
-
-// Close voucher system button
-closeVoucherSystemBtn.addEventListener('click', closeFolder);
-
-// Overlay click handler
-overlay.addEventListener('click', () => {
-    hideDynamicIsland();
-    closeFolderForm();
-    hideFolderActionIsland();
-    folderConfirmDialog.style.display = 'none';
-    itemConfirmDialog.style.display = 'none';
-    columnOptions.style.display = 'none';
-    document.querySelectorAll('.item-name-dropdown').forEach(dropdown => {
-        dropdown.style.display = 'none';
-    });
-    if (isSelectionMode) {
-        toggleSelectionMode();
-    }
-});
-
-// Voucher System Functions
-function loadVoucherData(folderId) {
-    const folders = JSON.parse(localStorage.getItem('folders')) || [];
-    const folder = folders.find(f => f.id === folderId);
-
-    if (!folder) return;
-
-    const voucherData = folder.voucherData || {
-        recipientName: '',
-        voucherDate: '',
-        items: []
-    };
-
-    recipientNameInput.value = voucherData.recipientName || '';
-    voucherDateInput.value = voucherData.voucherDate || '';
-    document.getElementById('displayRecipientName').textContent = voucherData.recipientName || '';
-    document.getElementById('displayVoucherDate').textContent = voucherData.voucherDate || '';
-
-    const tableBody = document.querySelector('#voucherTable tbody');
-    tableBody.innerHTML = ''; // Table ကို အရင်ရှင်းလိုက်မယ်
-
-    // အနည်းဆုံး တစ်ခုရှိအောင် ထည့်မယ်
-    if (voucherData.items.length === 0) {
-        addItemToTable('', 0, 0); // ဗလာ row တစ်ခု ထည့်မယ်
-    } else {
-        // ရှိပြီးသား ဒေတာတွေကို ထည့်မယ်
-        voucherData.items.forEach(item => {
-            addItemToTable(item.name || '', item.quantity || 0, item.price || 0);
-        });
-    }
-
-    updateGrandTotal();
-}
-
-function saveVoucherData() {
-    if (!currentFolderId) return;
-
-    const items = [];
-    document.querySelectorAll('#voucherTable tbody tr').forEach(row => {
-        const name = row.querySelector('.item-name input').value.trim(); // တန်ဖိုးမရှိရင်လည်း သိမ်းမယ်
-        const quantity = row.querySelector('.quantity input').value.trim();
-        const price = row.querySelector('.price input').value.trim();
-
-        // အနည်းဆုံး တစ်ခုခုရှိရင် သိမ်းမယ်
-        items.push({
-            name: name || '', // တန်ဖိုးမရှိရင် ဗလာကွက်သိမ်းမယ်
-            quantity: quantity ? parseInt(quantity) : 0, // တန်ဖိုးမရှိရင် 0 သိမ်းမယ်
-            price: price ? parseFloat(price) : 0 // တန်ဖိုးမရှိရင် 0 သိမ်းမယ်
-        });
-    });
-
-    const voucherData = {
-        recipientName: recipientNameInput.value,
-        voucherDate: voucherDateInput.value,
-        items
-    };
-
-    const folders = JSON.parse(localStorage.getItem('folders')) || [];
-    const folderIndex = folders.findIndex(f => f.id === currentFolderId);
-
-    if (folderIndex !== -1) {
-        folders[folderIndex].voucherData = voucherData;
-        localStorage.setItem('folders', JSON.stringify(folders));
-    }
-}
-
-// Initialize Dropdown for Item Name
-function initDropdown(row) {
-    const dropdown = row.querySelector('.item-name-dropdown');
-    dropdown.innerHTML = ''; // Clear previous items
-    predefinedItems.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'dropdown-item';
-        div.textContent = item;
-        div.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent click from closing dropdown immediately
-            row.querySelector('.item-name input').value = item;
-            dropdown.style.display = 'none';
-            updateRowTotal(row);
             updateGrandTotal();
-            saveVoucherData();
+        }
+
+        function saveVoucherData() {
+            if (!currentFolderId) return;
+
+            const items = [];
+            document.querySelectorAll('#voucherTable tbody tr').forEach(row => {
+                const name = row.querySelector('.item-name input').value.trim();
+                const quantity = row.querySelector('.quantity input').value.trim();
+                const price = row.querySelector('.price input').value.trim();
+
+                items.push({
+                    name: name || '',
+                    quantity: quantity ? parseInt(quantity) : 0,
+                    price: price ? parseFloat(price) : 0
+                });
+            });
+
+            const voucherData = {
+                recipientName: recipientNameInput.value,
+                voucherDate: voucherDateInput.value,
+                items
+            };
+
+            const folders = JSON.parse(localStorage.getItem('folders')) || [];
+            const folderIndex = folders.findIndex(f => f.id === currentFolderId);
+
+            if (folderIndex !== -1) {
+                folders[folderIndex].voucherData = voucherData;
+                localStorage.setItem('folders', JSON.stringify(folders));
+            }
+        }
+
+        // Initialize Dropdown for Item Name
+        function initDropdown(row) {
+            const dropdown = row.querySelector('.item-name-dropdown');
+            dropdown.innerHTML = '';
+            predefinedItems.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'dropdown-item';
+                div.textContent = item;
+                div.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    row.querySelector('.item-name input').value = item;
+                    dropdown.style.display = 'none';
+                    updateRowTotal(row);
+                    updateGrandTotal();
+                    saveVoucherData();
+                });
+                dropdown.appendChild(div);
+            });
+        }
+
+        // Show/Hide Column Options
+        addColumnBtn.addEventListener('click', () => {
+            columnOptions.style.display = columnOptions.style.display === 'block' ? 'none' : 'block';
         });
-        dropdown.appendChild(div);
-    });
-}
 
-// Show/Hide Column Options
-addColumnBtn.addEventListener('click', () => {
-    columnOptions.style.display = columnOptions.style.display === 'block' ? 'none' : 'block';
-});
+        // Add Columns
+        columnOptions.querySelectorAll('.column-option').forEach(option => {
+            option.addEventListener('click', () => {
+                const numColumns = parseInt(option.dataset.columns);
+                addColumnsToTable(numColumns);
+                columnOptions.style.display = 'none';
+                saveVoucherData();
+            });
+        });
 
-// Add Columns
-columnOptions.querySelectorAll('.column-option').forEach(option => {
-    option.addEventListener('click', () => {
-        const numColumns = parseInt(option.dataset.columns);
-        addColumnsToTable(numColumns);
-        columnOptions.style.display = 'none';
-        saveVoucherData();
-    });
-});
+        // Add Columns to Table
+        function addColumnsToTable(numColumns) {
+            const tableBody = document.querySelector('#voucherTable tbody');
+            const currentRows = tableBody.querySelectorAll('tr').length;
+            const rowsToAdd = numColumns - currentRows;
 
-// Add Columns to Table
-function addColumnsToTable(numColumns) {
-    const tableBody = document.querySelector('#voucherTable tbody');
-    const currentRows = tableBody.querySelectorAll('tr').length;
-    const rowsToAdd = numColumns - currentRows;
+            if (rowsToAdd > 0) {
+                for (let i = 0; i < rowsToAdd; i++) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="item-name">
+                            <div class="item-name-container">
+                                <input type="text" placeholder="Item Name">
+                                <div class="item-name-dropdown"></div>
+                            </div>
+                        </td>
+                        <td class="quantity"><input type="number" placeholder="Qty" min="0"></td>
+                        <td class="price"><input type="number" placeholder="Price" min="0"></td>
+                        <td class="total">0 ကျပ်</td>
+                    `;
+                    tableBody.appendChild(row);
+                    initDropdown(row);
+                    attachInputListeners(row);
+                    row.querySelector('.item-name').addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const rows = Array.from(document.querySelectorAll('#voucherTable tbody tr'));
+                        showDynamicIsland(row, rows.indexOf(row));
+                    });
+                }
+            }
+            updateGrandTotal();
+        }
 
-    if (rowsToAdd > 0) {
-        for (let i = 0; i < rowsToAdd; i++) {
+        // Attach Input Listeners for Table Inputs
+        function attachInputListeners(row) {
+            const itemNameInput = row.querySelector('.item-name input');
+            const dropdown = row.querySelector('.item-name-dropdown');
+            const inputs = row.querySelectorAll('input');
+
+            itemNameInput.addEventListener('click', (e) => {
+                e.stopPropagation();
+                initDropdown(row);
+                document.querySelectorAll('.item-name-dropdown').forEach(d => {
+                    if (d !== dropdown) d.style.display = 'none';
+                });
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            });
+
+            itemNameInput.addEventListener('input', () => {
+                const searchTerm = itemNameInput.value.toLowerCase();
+                const items = dropdown.querySelectorAll('.dropdown-item');
+                items.forEach(item => {
+                    if (item.textContent.toLowerCase().includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                updateRowTotal(row);
+                updateGrandTotal();
+                saveVoucherData();
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!row.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.style.display = 'none';
+                }
+            });
+
+            inputs.forEach(input => {
+                if (input !== itemNameInput) {
+                    input.addEventListener('input', () => {
+                        updateRowTotal(row);
+                        updateGrandTotal();
+                        saveVoucherData();
+                    });
+                }
+            });
+        }
+
+        // Update Row Total
+        function updateRowTotal(row) {
+            const quantity = parseInt(row.querySelector('.quantity input').value) || 0;
+            const price = parseFloat(row.querySelector('.price input').value) || 0;
+            const total = (quantity * price).toFixed(0);
+            row.querySelector('.total').textContent = `${total} ကျပ်`;
+        }
+
+        // Add Item to Table (for loading existing data)
+        function addItemToTable(name, quantity, price) {
+            const tableBody = document.querySelector('#voucherTable tbody');
             const row = document.createElement('tr');
+            const total = ((quantity || 0) * (price || 0)).toFixed(0);
             row.innerHTML = `
                 <td class="item-name">
                     <div class="item-name-container">
-                        <input type="text" placeholder="Item Name">
+                        <input type="text" value="${name}" placeholder="Item Name">
                         <div class="item-name-dropdown"></div>
                     </div>
                 </td>
-                <td class="quantity"><input type="number" placeholder="Qty" min="0"></td>
-                <td class="price"><input type="number" placeholder="Price" min="0"></td>
-                <td class="total">0 ကျပ်</td>
+                <td class="quantity"><input type="number" value="${quantity || ''}" placeholder="Qty" min="0"></td>
+                <td class="price"><input type="number" value="${price || ''}" placeholder="Price" min="0"></td>
+                <td class="total">${total} ကျပ်</td>
             `;
             tableBody.appendChild(row);
             initDropdown(row);
@@ -1230,175 +1359,132 @@ function addColumnsToTable(numColumns) {
                 showDynamicIsland(row, rows.indexOf(row));
             });
         }
-    }
-    updateGrandTotal();
-}
 
-// Attach Input Listeners for Table Inputs
-function attachInputListeners(row) {
-    const itemNameInput = row.querySelector('.item-name input');
-    const dropdown = row.querySelector('.item-name-dropdown');
-    const inputs = row.querySelectorAll('input');
+        // Update Grand Total
+        function updateGrandTotal() {
+            const rows = document.querySelectorAll('#voucherTable tbody tr');
+            let grandTotal = 0;
+            rows.forEach(row => {
+                const total = parseFloat(row.querySelector('.total').textContent.replace(' ကျပ်', '')) || 0;
+                grandTotal += total;
+            });
+            document.getElementById('grandTotal').textContent = `Grand Total: ${grandTotal.toFixed(0)} ကျပ်`;
+            saveVoucherData();
+        }
 
-    // Show dropdown on click instead of focus
-    itemNameInput.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevent click from closing dropdown
-        initDropdown(row);
-        // Hide all other dropdowns
-        document.querySelectorAll('.item-name-dropdown').forEach(d => {
-            if (d !== dropdown) d.style.display = 'none';
+        // Show/Hide Dynamic Island
+        function showDynamicIsland(row, index) {
+            selectedRow = row;
+            editIndex = index;
+            dynamicIsland.classList.add('visible');
+            overlay.style.display = 'block';
+            addColumnBtn.style.opacity = '0';
+            setTimeout(() => addColumnBtn.style.display = 'none', 400);
+        }
+
+        function hideDynamicIsland() {
+            dynamicIsland.classList.remove('visible');
+            overlay.style.display = 'none';
+            addColumnBtn.style.display = 'block';
+            setTimeout(() => addColumnBtn.style.opacity = '1', 50);
+            selectedRow = null;
+            editIndex = null;
+        }
+
+        // Dynamic Island Actions
+        islandDeleteBtn.addEventListener('click', () => {
+            itemConfirmDialog.style.display = 'block';
+            overlay.style.display = 'block';
         });
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-    });
 
-    // Filter dropdown items based on input
-    itemNameInput.addEventListener('input', () => {
-        const searchTerm = itemNameInput.value.toLowerCase();
-        const items = dropdown.querySelectorAll('.dropdown-item');
-        items.forEach(item => {
-            if (item.textContent.toLowerCase().includes(searchTerm)) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
+        islandSaveBtn.addEventListener('click', () => {
+            saveOptionsDialog.style.display = 'block';
+            overlay.style.display = 'block';
+        });
+
+        confirmItemDelete.addEventListener('click', () => {
+            if (selectedRow) {
+                selectedRow.remove();
+                updateGrandTotal();
+                hideDynamicIsland();
+                itemConfirmDialog.style.display = 'none';
+                overlay.style.display = 'none';
+                saveVoucherData();
             }
         });
-        updateRowTotal(row);
-        updateGrandTotal();
-        saveVoucherData();
-    });
 
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!row.contains(e.target) && !dropdown.contains(e.target)) {
-            dropdown.style.display = 'none';
-        }
-    });
+        cancelItemDelete.addEventListener('click', () => {
+            itemConfirmDialog.style.display = 'none';
+            overlay.style.display = 'none';
+        });
 
-    // Update totals on quantity and price input
-    inputs.forEach(input => {
-        if (input !== itemNameInput) {
-            input.addEventListener('input', () => {
-                updateRowTotal(row);
-                updateGrandTotal();
-                saveVoucherData();
+        // Save Options
+        saveAsJpg.addEventListener('click', () => {
+            saveVoucherAsImage('jpg');
+            saveOptionsDialog.style.display = 'none';
+            overlay.style.display = 'none';
+            hideDynamicIsland();
+        });
+
+        saveAsPng.addEventListener('click', () => {
+            saveVoucherAsImage('png');
+            saveOptionsDialog.style.display = 'none';
+            overlay.style.display = 'none';
+            hideDynamicIsland();
+        });
+
+        // Save Voucher as Image
+        function saveVoucherAsImage(format) {
+            const voucher = document.getElementById('voucher');
+            
+            const options = {
+                useCORS: true,
+                scale: window.devicePixelRatio || 2,
+                letterRendering: true,
+                allowTaint: true,
+                logging: false,
+                onclone: function(clonedDoc) {
+                    clonedDoc.body.style.fontFamily = "'Padauk', 'Myanmar Text', sans-serif";
+                }
+            };
+
+            html2canvas(voucher, options).then(canvas => {
+                const fileName = `voucher_${recipientNameInput.value || 'unnamed'}_${new Date().toISOString().split('T')[0]}.${format}`;
+                
+                if (format === 'jpg') {
+                    canvas.toBlob(blob => {
+                        const link = document.createElement('a');
+                        link.download = fileName;
+                        link.href = URL.createObjectURL(blob);
+                        link.click();
+                        URL.revokeObjectURL(link.href);
+                    }, 'image/jpeg', 0.95);
+                } else {
+                    canvas.toBlob(blob => {
+                        const link = document.createElement('a');
+                        link.download = fileName;
+                        link.href = URL.createObjectURL(blob);
+                        link.click();
+                        URL.revokeObjectURL(link.href);
+                    }, 'image/png', 1.0);
+                }
+            }).catch(error => {
+                alert('Voucher ကို saveမရပါ - ' + error);
             });
         }
-    });
-}
 
-// Update Row Total
-function updateRowTotal(row) {
-    const quantity = parseInt(row.querySelector('.quantity input').value) || 0;
-    const price = parseFloat(row.querySelector('.price input').value) || 0;
-    const total = (quantity * price).toFixed(0);
-    row.querySelector('.total').textContent = `${total} ကျပ်`;
-}
+        // Details Form
+        document.getElementById('detailsForm').addEventListener('input', () => {
+            document.getElementById('displayRecipientName').textContent = recipientNameInput.value;
+            document.getElementById('displayVoucherDate').textContent = voucherDateInput.value;
+            saveVoucherData();
+        });
 
-// Add Item to Table (for loading existing data)
-function addItemToTable(name, quantity, price) {
-    const tableBody = document.querySelector('#voucherTable tbody');
-    const row = document.createElement('tr');
-    const total = ((quantity || 0) * (price || 0)).toFixed(0);
-    row.innerHTML = `
-        <td class="item-name">
-            <div class="item-name-container">
-                <input type="text" value="${name}" placeholder="Item Name">
-                <div class="item-name-dropdown"></div>
-            </div>
-        </td>
-        <td class="quantity"><input type="number" value="${quantity || ''}" placeholder="Qty" min="0"></td>
-        <td class="price"><input type="number" value="${price || ''}" placeholder="Price" min="0"></td>
-        <td class="total">${total} ကျပ်</td>
-    `;
-    tableBody.appendChild(row);
-    initDropdown(row);
-    attachInputListeners(row);
-    row.querySelector('.item-name').addEventListener('click', (e) => {
-        e.stopPropagation();
-        const rows = Array.from(document.querySelectorAll('#voucherTable tbody tr'));
-        showDynamicIsland(row, rows.indexOf(row));
-    });
-}
-
-// Update Grand Total
-function updateGrandTotal() {
-    const rows = document.querySelectorAll('#voucherTable tbody tr');
-    let grandTotal = 0;
-    rows.forEach(row => {
-        const total = parseFloat(row.querySelector('.total').textContent.replace(' ကျပ်', '')) || 0;
-        grandTotal += total;
-    });
-    document.getElementById('grandTotal').textContent = `Grand Total: ${grandTotal.toFixed(0)} ကျပ်`;
-    saveVoucherData();
-}
-
-// Show/Hide Dynamic Island
-function showDynamicIsland(row, index) {
-    selectedRow = row;
-    editIndex = index;
-    dynamicIsland.classList.add('visible');
-    overlay.style.display = 'block';
-    addColumnBtn.style.opacity = '0';
-    setTimeout(() => addColumnBtn.style.display = 'none', 400);
-}
-
-function hideDynamicIsland() {
-    dynamicIsland.classList.remove('visible');
-    overlay.style.display = 'none';
-    addColumnBtn.style.display = 'block';
-    setTimeout(() => addColumnBtn.style.opacity = '1', 50);
-    selectedRow = null;
-    editIndex = null;
-}
-
-// Dynamic Island Actions
-islandDeleteBtn.addEventListener('click', () => {
-    itemConfirmDialog.style.display = 'block';
-    overlay.style.display = 'block';
-});
-
-confirmItemDelete.addEventListener('click', () => {
-    if (selectedRow) {
-        selectedRow.remove();
-        updateGrandTotal();
-        hideDynamicIsland();
-        itemConfirmDialog.style.display = 'none';
-        overlay.style.display = 'none';
-        saveVoucherData();
-    }
-});
-
-cancelItemDelete.addEventListener('click', () => {
-    itemConfirmDialog.style.display = 'none';
-    overlay.style.display = 'none';
-});
-
-// Details Form
-document.getElementById('detailsForm').addEventListener('input', () => {
-    document.getElementById('displayRecipientName').textContent = recipientNameInput.value;
-    document.getElementById('displayVoucherDate').textContent = voucherDateInput.value;
-    saveVoucherData();
-});
-
-// Save Voucher as Image
-saveBtn.addEventListener('click', () => {
-    const voucher = document.getElementById('voucher');
-    html2canvas(voucher, { 
-        useCORS: true, 
-        scale: window.devicePixelRatio || 2
-    }).then(canvas => {
-        canvas.toBlob(blob => {
-            const link = document.createElement('a');
-            link.download = `voucher_${recipientNameInput.value || 'unnamed'}_${new Date().toISOString().split('T')[0]}.jpg`;
-            link.href = URL.createObjectURL(blob);
-            link.click();
-            URL.revokeObjectURL(link.href);
-        }, 'image/jpeg', 0.95);
-    }).catch(error => {
-        alert('Voucher ကို saveမရပါ - ' + error);
-    });
-});
-        
+        // Main Save Button
+        saveBtn.addEventListener('click', () => {
+            saveOptionsDialog.style.display = 'block';
+            overlay.style.display = 'block';
+        });
     </script>
 
 </body></html>
